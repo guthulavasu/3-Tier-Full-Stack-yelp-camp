@@ -4,22 +4,17 @@ metadata:
   name: yelp-camp-deployment
 spec:
   replicas: 3
+
   selector:
     matchLabels:
       app: yelp-camp
+
   template:
     metadata:
       labels:
         app: yelp-camp
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchLabels:
-                  app: yelp-camp
-              topologyKey: kubernetes.io/hostname
 
+    spec:
       containers:
         - name: yelp-camp-container
           image: guthulavasuu/prodproject:appimage
